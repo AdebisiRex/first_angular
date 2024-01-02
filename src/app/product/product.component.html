@@ -1,0 +1,31 @@
+<div class="w-50 mx-auto p-3 border shadow-sm rounded-3 ">
+    <h3 class="text-uppercase text-center mb-3">Add Your Products Here</h3>
+    <!-- <p>{{product_name}}</p> -->
+    <div class="">
+        <input type="text" class="form-control mb-3" placeholder="Product Name" [(ngModel)]="product_name">
+        <button class="btn btn-info form-control" (click)="addProduct()">Add Product</button>
+    </div>
+    <button (click)="moveAround()"> TO Signin</button>
+</div>
+
+
+<!-- Form -->
+<form (submit)="submitForm()" userForm="ngForm" class="w-50 mx-auto p-3 border shadow-sm rounded-3 ">
+    <h3 class="text-uppercase text-center mb-3">Na the form side be this</h3>
+    <!-- <p>{{product_name}}</p> -->
+    <div class="">
+        <input type="text" name="product_name" product_name="ngModel" class="form-control mb-3" placeholder="Product Name" [(ngModel)]="product_name">
+        <button class="btn btn-primary form-control">Inside Form</button>
+    </div>
+    <button (click)="moveAround()"> TO Signin</button>
+</form>
+
+
+<p *ngIf="product_array.length <1">No Products Yet</p>
+<div *ngFor="let i = index;let item of product_array" class="border d-flex justify-content-between w-50 mx-auto my-5 p-3 "> 
+    <p><span>{{i+1}}. </span> {{item.product_name}}</p>
+    <div>
+        <button routerLink="/product/{{i}}" class="btn btn-primary">Edit</button>
+        <button (click)="deleteProduct(i)" class="btn btn-danger">Delete</button>
+    </div>
+</div>
